@@ -790,4 +790,347 @@ h1, h2, h3, p, a, button{ word-wrap: break-word; overflow-wrap: anywhere; }
     object-fit: cover;
   }
 }
+/* CONTACT RIGHT SIDE — on-brand redesign */
+.contact-aside{
+  display: grid;
+  gap: 12px;
+}
+
+.contact-card.brand{
+  color: #fff;
+  background:
+    radial-gradient(600px 200px at 100% 0, rgba(255,51,102,.25), transparent 60%),
+    linear-gradient(180deg, #2b0a3d 0%, #220032 100%); /* deep purple blend */
+  border: 1px solid rgba(255,255,255,.08);
+}
+.contact-card.brand h3{
+  margin: 0 0 6px;
+  font-size: clamp(20px, 2.2vw, 24px);
+  font-weight: 900;
+  letter-spacing: .02em;
+}
+.contact-card.brand h3 span{ color: var(--accent); }
+.contact-card.brand .tagline{ color: var(--muted); margin: 0 0 12px; }
+.contact-card.brand .cta-row{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.contact-card.brand .call-btn{ width: 100%; justify-content: center; }
+
+.contact-card.hours ul{ margin: 0; padding: 0; list-style: none; }
+.hours-list li{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 0; border-bottom: 1px dashed var(--border);
+}
+.hours-list li:last-child{ border-bottom: 0; }
+.hours-list span{ color: #555; }
+.hours-list strong{ color: #220032; }
+
+.contact-card.location .link{ display:inline-block; margin-top: 6px; font-weight: 800; color: var(--accent); }
+
+.contact-card.social .social-row{ display:flex; gap: 12px; }
+.social-icon{
+  display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: #f7f7fb; color: #220032; border: 1px solid var(--border);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.social-icon:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(17,24,39,.12); }
+.tiny-note{ color: #555; margin: 10px 0 0; font-size: 13px; }
+
+/* make all contact cards consistent height feel on desktop */
+@media (min-width: 900px){
+  .contact-aside{ grid-auto-rows: 1fr; }
+}
+
+/* mobile tweaks */
+@media (max-width: 640px){
+  .contact-card.brand .cta-row{ justify-content: center; }
+  .contact-card.brand .response{ text-align: center; }
+}
+/* ---------- HOURS CARD (elevated, brand colors) ---------- */
+.contact-card.hours.v2{
+  background:
+    radial-gradient(600px 180px at 105% -10%, rgba(255,51,102,.10), transparent 60%),
+    linear-gradient(180deg, #ffffff, #fbfbfd);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 8px 24px rgba(17,24,39,.06);
+}
+
+.hours-head{
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+}
+.hours-head svg{
+  width: 20px; height: 20px; color: var(--accent);
+}
+.contact-card.hours.v2 h4{
+  margin: 0; font-size: 18px; color: #220032; letter-spacing: .2px;
+}
+
+/* List */
+.hours-list{
+  margin: 4px 0 8px; padding: 0; list-style: none;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+}
+.hours-list li{
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 12px; align-items: center;
+  padding: 12px 2px;
+}
+.hours-list li + li{ border-top: 1px dashed var(--border); }
+
+/* Day label chip */
+.hours-list .day{
+  display: inline-flex; align-items: center; justify-content: flex-start;
+  gap: 8px; color: #3a3650; font-weight: 600;
+  position: relative; padding-left: 12px;
+}
+.hours-list .day::before{
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+}
+
+/* Time — mono for better alignment */
+.hours-list .time{
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "ss01" 1;
+  color: #220032; font-weight: 800;
+}
+
+/* Special styling for appointment line */
+.hours-list .appt .time{
+  color: #220032; font-weight: 900;
+}
+
+/* Subnote */
+.contact-card.hours.v2 .note{
+  display:flex; align-items:center; gap:8px;
+  color:#5d6070; margin:10px 2px 0; font-size: 13px;
+}
+.contact-card.hours.v2 .note .dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(255,51,102,.12);
+}
+
+/* Optional: highlight today's row automatically by adding .today to the li */
+.hours-list li.today{
+  background: rgba(255,51,102,.06);
+  border-radius: 12px;
+}
+
+/* Mobile polish */
+@media (max-width: 640px){
+  .contact-card.hours.v2{ padding: 14px; }
+  .hours-list li{ padding: 10px 2px; }
+  .hours-list .time{ font-size: 15px; }
+}
+/* COMPACT CONTACT FORM LAYOUT */
+.contact-form.compact{
+  padding: 18px;
+}
+.contact-form.compact .sub{
+  margin: 4px 0 14px;
+  color: #5b5e6c;
+  font-size: 14px;
+}
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.field-full{ grid-column: 1; }
+
+.contact-form.compact .field{ margin-bottom: 0; }
+.contact-form.compact label{ font-weight: 700; font-size: 14px; }
+.contact-form.compact input,
+.contact-form.compact select,
+.contact-form.compact textarea{
+  padding: 10px 12px;            /* denser controls */
+  border-radius: 12px;
+}
+
+/* Actions row */
+.form-actions{
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 12px; flex-wrap: wrap;
+}
+.form-actions .help{ color:#5b5e6c; font-size: 14px; }
+.form-actions .help .link{ color: var(--accent); font-weight: 800; }
+
+/* Tablet & up: two-column grid so the form looks short */
+@media (min-width: 640px){
+  .form-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 16px;
+  }
+  .field-full{ grid-column: 1 / -1; }
+}
+
+/* Desktop: a touch more air, aligned actions */
+@media (min-width: 900px){
+  .contact-form.compact{ padding: 22px; }
+  .form-actions{ justify-content: flex-start; }
+}
+
+/* Mobile: center actions & allow full-width button if needed */
+@media (max-width: 480px){
+  .form-actions{ justify-content: center; }
+  /* Uncomment to make the button full width on very small phones */
+  /* .form-actions .btn{ width: 100%; } */
+}
+
+/* Simplified contact info cards */
+.contact-aside.wide {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-card.quick ul.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.contact-card.quick li {
+  font-size: 15px;
+  color: #220032;
+}
+
+.contact-card.quick strong {
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+.contact-card.quick a {
+  color: #220032;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.contact-card.quick a:hover {
+  color: var(--accent);
+}
+/* ================================
+   GET IN TOUCH CTA (BeTheme-style)
+   ================================ */
+.touch-cta{ padding-top: 0; }
+
+.touch-box{
+  position: relative;
+  display: grid;
+  grid-template-columns: .9fr 1.2fr 1fr; /* art | headline | info */
+  gap: clamp(18px, 3vw, 32px);
+  align-items: center;
+  background: var(--bg-dark);
+  color: #fff;
+  border-radius: 34px;
+  padding: clamp(20px, 4vw, 40px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+
+/* multicolor strip under the card */
+.touch-box::after{
+  content:"";
+  position: absolute;
+  left: clamp(12px, 4vw, 28px);
+  right: clamp(12px, 4vw, 28px);
+  bottom: 0;
+  height: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background:
+    linear-gradient(90deg,
+      #ff4d79 0% 25%,
+      #3ddab4 25% 50%,
+      #ffe270 50% 75%,
+      #ffd6d6 75% 100%
+    );
+}
+
+/* Left art */
+.touch-art{
+  align-self: stretch;
+  display: grid; place-items: center;
+}
+.touch-art img{
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+/* Center */
+.touch-center .kicker{ color: var(--accent); margin-bottom: 8px; }
+.touch-title{
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1.05;
+  font-size: clamp(34px, 5.6vw, 64px);
+  margin: 0;
+}
+
+/* Right info */
+.touch-right{ justify-self: end; text-align: left; }
+.touch-phone{
+  display: inline-block;
+  font-weight: 900;
+  font-size: clamp(20px, 2.6vw, 32px);
+  color: #fff;
+  margin-bottom: 10px;
+}
+.touch-hours{
+  margin: 6px 0 16px; padding: 0; list-style: none;
+}
+.touch-hours li{
+  display: grid; grid-template-columns: 1fr auto; gap: 12px;
+  align-items: center; padding: 6px 0;
+}
+.touch-hours span{ color: rgba(255,255,255,.9); }
+.touch-hours strong{
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+/* Button & link row */
+.touch-btn{ border: none; }
+.touch-links{
+  margin-top: 10px; display:flex; flex-wrap: wrap; gap: 10px;
+}
+.touch-links a{
+  color: rgba(255,255,255,.85);
+  font-weight: 700; font-size: 14px;
+}
+.touch-links a:hover{ color: var(--accent); }
+
+/* -----------------
+   Responsive tweaks
+   ----------------- */
+@media (max-width: 1024px){
+  .touch-box{ grid-template-columns: .8fr 1.2fr 1fr; }
+}
+
+@media (max-width: 820px){
+  .touch-box{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .touch-art{ order: -1; }
+  .touch-center{ order: 0; }
+  .touch-right{
+    order: 1; justify-self: center; text-align: center;
+  }
+  .touch-hours li{ grid-template-columns: 1fr; }
+  .touch-btn{ width: 100%; max-width: 260px; }
+  .touch-box::after{
+    left: 16px; right: 16px; height: 8px;
+  }
+  .touch-art img{ max-width: 280px; border-radius: 20px; }
+}
 
